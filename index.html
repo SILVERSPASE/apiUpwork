@@ -13,8 +13,6 @@
 <script src="js/modules/dataStorage.js"></script>
 <script src="js/modules/itemFilter.js"></script>
 
-
-
 <body data-ng-app = 'app'>
 
 	<div data-ng-controller = 'mainCtrl'>
@@ -36,52 +34,62 @@
 <!-- 			<div class="row">
   				<a href="#/">Home</a>
   			</div>  -->
-  			<div class="row">
-				<div class="col-md-3">
+			<div class="col-md-6">
+				<div class="col-md-2">
 					<div class="leftFilter">
-						<button class="filterReset btn btn-primary" ng-click = 'usedFilter = {}' ng-show = 'showReset()'>Reset</button>
-						<div ng-repeat = '(filterKey, filterValue) in leftFilter'>
-							{{filterKey}}
+						<button data-ng-click = 'usedFilter = {}' 
+								data-ng-show = 'showReset()'
+								class="filterReset btn btn-primary">Reset</button>
+						<div data-ng-repeat = '(filterKey, filterValue) in leftFilter'>
+							{{filterValue.name}}
 							<ul>
-				<li ng-repeat = '(filterPointkey, filterPointValue) in leftFilter[filterKey]'
-					ng-click = 'clickLeftFilter(filterKey, filterPointValue)' 
+				<li data-ng-repeat = '(filterPointkey, filterPointValue) in leftFilter[filterKey].points'
+					data-ng-click = 'clickLeftFilter(filterKey, filterPointValue)' 
 					data-ng-class="usedFilter[filterKey][filterPointValue] ? 'checked' : 'notChecked' ">
-				<span ng-hide ='usedFilter[filterKey][filterPointValue]' class="glyphicon glyphicon-unchecked"></span>
-				<span ng-show ='usedFilter[filterKey][filterPointValue]' class="glyphicon glyphicon-check">
+				<span data-ng-hide ='usedFilter[filterKey][filterPointValue]' class="glyphicon glyphicon-unchecked"></span>
+				<span data-ng-show ='usedFilter[filterKey][filterPointValue]' class="glyphicon glyphicon-check">
 				</span>
-				{{filterPointValue}}
+				<span data-ng-if = 'filterKey == "level" '>
+					<span data-ng-show = '{{filterPointValue}} == 1'>Entry</span>
+					<span data-ng-show = '{{filterPointValue}} == 2'>Medium</span>
+					<span data-ng-show = '{{filterPointValue}} == 3'>Expert</span>
+				</span>
+				<span data-ng-if = 'filterKey != "level"'>{{filterPointValue}}</span>
 				</li>
 							</ul>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-9">
+				<div class="col-md-10">
+					<div class="topTabs">
+						<ul class="nav nav-tabs">
+							<li ng-repeat = '(oneTabKey, oneTabValue) in topTabs' 
+								ng-class = 'usedTab[oneTabKey] ? "active" : "notActive"'
+								ng-click = 'clickTab(oneTabKey)'>
+								<a href="">{{oneTabValue.name}}</a>
+							</li>
+						</ul>
+					</div>
 					<div 	class = 'oneJobBox' 
-							data-ng-repeat = 'oneJobKey in jobListKeys | itemFilter : usedFilter : jobList'>
-	  					<div class="col-md-3 sideData">
-							<div>
-								<span class="label" >Job type: </span>
-								<span class="{{jobList[oneJobKey].job_type}}">
-									{{jobList[oneJobKey].job_type}}</span>
+							data-ng-repeat = 'oneJobKey in jobListKeys | tabFilter : usedTab : jobList	'>
+<!-- 					<div 	class = 'oneJobBox' 
+							data-ng-repeat = 'oneJobKey in jobListKeys | itemFilter : usedFilter : jobList | tabFilter : usedTab : topTabs'> -->
+	  					<div class="col-md-2 sideData">
+							<div class="firstLine">
+								<span data-ng-show = 'jobList[oneJobKey].job_type == "Fixed"'>Fxd</span>
+								<span data-ng-show = 'jobList[oneJobKey].job_type == "Hourly"'>Hr</span>
+								
+								${{jobList[oneJobKey].budget}}
+								<span class = 'level_{{jobList[oneJobKey].level}}' data-ng-show = 'jobList[oneJobKey].level == 1'>$</span>
+								<span class = 'level_{{jobList[oneJobKey].level}}' data-ng-show = 'jobList[oneJobKey].level == 2'>$$</span>
+								<span class = 'level_{{jobList[oneJobKey].level}}' data-ng-show = 'jobList[oneJobKey].level == 3'>$$$</span>
 							</div>
-							<div data-ng-hide = 'jobList[oneJobKey].budget == 0'>
-								<span class="label">Budget:</span> {{jobList[oneJobKey].budget}}
-							</div>
-							<div class = 'level_{{jobList[oneJobKey].level}}'>
-								<span class="label">Level:</span> <span ng-show = 'jobList[oneJobKey].level == 1'>Entry</span>
-								<span ng-show = 'jobList[oneJobKey].level == 2'>Intermediate</span>
-								<span ng-show = 'jobList[oneJobKey].level == 3'>Expert</span>
-							</div>
-							<div>
-								<span class="label">Country: </span> {{jobList[oneJobKey].country}}
-							</div>
-							<div>
-								<span class="label">Posted: </span> {{jobList[oneJobKey].posted}} ago
-							</div>
-							<button class = 'btn btn-primary'>Upwork</button>
-							<button class = 'btn btn-primary'>More</button>
+							<div>{{jobList[oneJobKey].country}}
+								{{jobList[oneJobKey].posted}} ago</div>
+							<button class = 'btn btn-primary btn-sm'>Upwork</button>
+							<button class = 'btn btn-primary btn-sm'>More</button>
 	  					</div>
-	  					<div class="col-md-9">
+	  					<div class="col-md-10">
 	  						<h3>Java Developer required to create app connected to Odoo ERP</h3>
 							<div>As part of its mission to share best practices, Match Export is creating web applications and tools to offer videos, curriculum and other content with a diverse audience of educators. We are looking for a Full-Stack Software Engineer who will be responsible f
 							</div>
@@ -89,7 +97,8 @@
 	  					<div class="clearfix"></div>
 	   				</div>
 				</div>
-  			</div>
+			</div>
+			<div class="col-md-6"></div>
   			<div class="row">
 				<data-ng-view></data-ng-view>	<!-- data-ng-route directive  -->
 			</div>
