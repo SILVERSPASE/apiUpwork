@@ -1,0 +1,35 @@
+/*anntibootstrap*/
+.container{width: 1430px;}
+
+body{background: #EDEEF0; font-size:18px;color: #555;font-weight: 500;min-width: 840px;}
+h3{margin: 0; font-weight: 500; color:black;}
+li{list-style: none;}
+
+.topLine{background:#337ab7; margin-bottom:40px; height:50px; color:white;}
+.topLine .name{line-height:50px;}
+.userName {display: inline-block; padding: 0 10px;}
+.oneJobBox{border:1px solid #989898;padding: 10px 0;vertical-align: top;background: white;}
+.label{color:#555; width: 90px; display: inline-block; text-align: left; font-size: 16px;}
+.level_1 {color:#F0AD4E;}
+.level_2{color: #5BC0DE;}
+.level_3{color: #5CB85C;}
+.Fixed{background: url(../img/fixed.png) no-repeat 96% 100%; display: inline-block; background-size: 35px;
+  padding-right: 42px;}
+.Hourly{ background: url(../img/hourly.png) no-repeat 94% 50%; display: inline-block; background-size: 20px;
+  padding-right: 30px; }
+
+.leftFilter{border:1px solid #989898;padding: 10px;vertical-align: top;background: white;}
+.leftFilter li{cursor: pointer;}
+.leftFilter .filterReset{position: absolute; right: 25px; top: 10px;}
+.checked{color: #008e00; font-weight: 600;}
+.sideData{font-weight: 600;}
+
+
+tr {border-bottom: 1px solid #427570;}
+th, td {padding: 5px 10px;}
+td span{display: block;}
+input, select {color:#2169b9; padding: 0 5px; margin: 5px 0; line-height: 30px; height: 30px;}
+table {width: 100%;}
+.tac{text-align: center;}
+.tar{text-align: right;}
+
