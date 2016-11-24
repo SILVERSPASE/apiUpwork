@@ -1,2 +1,2 @@
-# bankTerminal
-Demo: https://silverspase.github.io/bankTerminal/
+# apiUpwork
+Demo: https://silverspase.github.io/apiUpwork/
