@@ -21,6 +21,7 @@ app.controller('mainCtrl', function($scope, $dataStorage) {
 				delete $scope.usedFilter[filterKey];
 			};
 		};
+		console.log($scope.usedFilter);
 	};
 
 	$scope.clickTab = function(oneTabKey){

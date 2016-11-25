@@ -12,7 +12,7 @@
 <script src="js/modules/routeController.js"></script>
 <script src="js/modules/dataStorage.js"></script>
 <script src="js/modules/itemFilter.js"></script>
-
+ 
 <body data-ng-app = 'app'>
 
 	<div data-ng-controller = 'mainCtrl'>
@@ -70,10 +70,11 @@
 							</li>
 						</ul>
 					</div>
-					<div 	class = 'oneJobBox' 
-							data-ng-repeat = 'oneJobKey in jobListKeys | tabFilter : usedTab : jobList	'>
 <!-- 					<div 	class = 'oneJobBox' 
-							data-ng-repeat = 'oneJobKey in jobListKeys | itemFilter : usedFilter : jobList | tabFilter : usedTab : topTabs'> -->
+							data-ng-repeat = 'oneJobKey in jobListKeys | tabFilter : usedTab : jobList	'> -->
+
+					<div 	class = 'oneJobBox' 
+							data-ng-repeat = 'oneJobKey in jobListKeys | tabFilter : usedTab : jobList | itemFilter : usedFilter : jobList' >
 	  					<div class="col-md-2 sideData">
 							<div class="firstLine">
 								<span data-ng-show = 'jobList[oneJobKey].job_type == "Fixed"'>Fxd</span>
